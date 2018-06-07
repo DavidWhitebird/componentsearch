@@ -23,19 +23,13 @@ function AutoGrid(props) {
     <div className={classes.root}>
       <Grid container spacing={24}>
         <Grid item xs>
-          <Paper className={classes.paper}>
-          eyoooooooo
-          </Paper>
+          <Paper className={classes.paper}>eyoooooooo</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>
-          xs
-          </Paper>
+          <Paper className={classes.paper}>xs</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>
-          xs
-          </Paper>
+          <Paper className={classes.paper}>xs</Paper>
         </Grid>
       </Grid>
       <Grid container spacing={24}>

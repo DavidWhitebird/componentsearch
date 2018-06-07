@@ -32,11 +32,7 @@ class CenteredTabs extends React.Component {
           textColor="primary"
           centered
         >
-        <Tab label="All" />
-
-        {muscles.map(group =>
-
-          )}
+          <Tab label="Item One" />
           <Tab label="Item Two" />
           <Tab label="Item Three" />
         </Tabs>
