@@ -63,9 +63,23 @@ class MenuAppBar extends React.Component {
 
 
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-              <MenuIcon />
-            </IconButton>
+            <div>
+              <IconButton
+                  className={classes.menuButton}
+                  color="inherit"
+                  onClick={this.handleMenu}
+
+                  aria-label="Menu"
+              >
+
+
+                <MenuIcon okay/>
+
+
+
+              </IconButton>
+
+            </div>
             <Typography variant="title" color="inherit" className={classes.flex}>
               Insert User Name Here
             </Typography>
