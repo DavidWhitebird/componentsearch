@@ -51,32 +51,33 @@ class MenuAppBar extends React.Component {
 
     return (
       <div className={classes.root}>
-          {/*<FormGroup>
-          <FormControlLabel
-            control={
-              <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
-            }
-            label={auth ? 'Logout' : 'Login'}
-          />
-        </FormGroup>*/}
           <AppBar position="static">
-
-
           <Toolbar>
             <div>
               <IconButton
                   className={classes.menuButton}
                   color="inherit"
                   onClick={this.handleMenu}
-
                   aria-label="Menu"
               >
-
-
-                <MenuIcon okay/>
-
-
-
+                  <Menu
+                      id="menu-appbar"
+                      anchorEl={anchorEl}
+                      anchorOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right',
+                      }}
+                      transformOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right',
+                      }}
+                      open={open}
+                      onClose={this.handleClose}
+                  >
+                      <MenuItem onClick={this.handleClose}>THIS IS A TEST</MenuItem>
+                      <MenuItem onClick={this.handleClose}>TEST COMPLETE</MenuItem>
+                  </Menu>
+                <MenuIcon />
               </IconButton>
 
             </div>
