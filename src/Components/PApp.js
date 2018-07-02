@@ -1,6 +1,7 @@
 import React, { Component, Fragment} from 'react';
 import { Header, Footer} from './Layouts/index.js';
 import Exercises from './Exercises';
+import Dave from './Layouts/Dave.js';
 
 
 export default class extends Component {
@@ -11,6 +12,8 @@ export default class extends Component {
 			<Exercises />
 			
 			<Footer/>
+
+			<Dave />
 		</Fragment>
 	}
 }
