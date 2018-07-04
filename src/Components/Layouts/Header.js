@@ -12,6 +12,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import Button from '@material-ui/core/Button';
+
 
 const styles = {
   root: {
@@ -48,73 +50,46 @@ class MenuAppBar extends React.Component {
     const { classes } = this.props;
     const { auth, anchorEl } = this.state;
     const open = Boolean(anchorEl);
-
     return (
       <div className={classes.root}>
           <AppBar position="static">
-          <Toolbar>
-            <div>
-              <IconButton
-                  className={classes.menuButton}
-                  color="inherit"
-                  onClick={this.handleMenu}
-                  aria-label="Menu"
-              >
-                  <Menu
-                      id="menu-appbar"
-                      anchorEl={anchorEl}
-                      anchorOrigin={{
-                          vertical: 'top',
-                          horizontal: 'right',
-                      }}
-                      transformOrigin={{
-                          vertical: 'top',
-                          horizontal: 'right',
-                      }}
-                      open={open}
-                      onClose={this.handleClose}
-                  >
-                      <MenuItem onClick={this.handleClose}>THIS IS A TEST</MenuItem>
-                      <MenuItem onClick={this.handleClose}>TEST COMPLETE</MenuItem>
-                  </Menu>
-                <MenuIcon />
-              </IconButton>
-
-            </div>
-            <Typography variant="title" color="inherit" className={classes.flex}>
-              Insert User Name Here
-            </Typography>
-            {auth && (
-              <div>
-                <IconButton
-                  aria-owns={open ? 'menu-appbar' : null}
-                  aria-haspopup="true"
-                  onClick={this.handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={open}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>Log Out</MenuItem>
-                </Menu>
-              </div>
+            <Toolbar>{auth && (
+                <div>
+                    <IconButton
+                        aria-owns={open ? 'menu-appbar' : null}
+                        aria-haspopup="true"
+                        onClick={this.handleMenu}
+                        color="inherit"
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Menu
+                        id="User-Menu"
+                        anchorEl={anchorEl}
+                        anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        open={open}
+                        onClose={this.handleClose}
+                    >
+                        <MenuItem onClick={this.handleClose}>Playlists</MenuItem>
+                        <MenuItem onClick={this.handleClose}>Create New Playlist</MenuItem>
+                    </Menu>
+                </div>
             )}
+            <Typography variant="title" color="inherit" className={classes.flex}>
+              Basement Tunes
+            </Typography>
+           <Button color="inherit">Logout</Button>
           </Toolbar>
+
         </AppBar>
+
       </div>
     );
   }
