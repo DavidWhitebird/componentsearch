@@ -49,7 +49,7 @@ class ListDividers extends React.Component {
     };
 
     handleMenu = event => {
-        this.setState({ anchorEl: event.currentTarget });
+        alert("Please Enter Playlist Name");
     };
 
     handleClose = () => {
