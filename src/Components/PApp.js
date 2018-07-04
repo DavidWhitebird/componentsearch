@@ -7,13 +7,13 @@ import Dave from './Layouts/Dave.js';
 export default class extends Component {
 	render() {
 		return <Fragment>
-			<Header />
+				<Header />
 
-			<Exercises />
+				<Exercises />
 			
-			<Footer/>
+				<Footer/>
 
-			<Dave />
+				{/*<Dave />*/}
 		</Fragment>
 	}
 }

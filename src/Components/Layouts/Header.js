@@ -13,6 +13,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
+
 const styles = {
   root: {
     flexGrow: 1,
@@ -25,6 +26,10 @@ const styles = {
     marginRight: 20,
   },
 };
+
+class Menu2 extends Menu {
+
+}
 
 class MenuAppBar extends React.Component {
   state = {
@@ -60,8 +65,8 @@ class MenuAppBar extends React.Component {
                   onClick={this.handleMenu}
                   aria-label="Menu"
               >
-                  <Menu
-                      id="menu-appbar"
+                  <Menu2
+                      id="menu-different"
                       anchorEl={anchorEl}
                       anchorOrigin={{
                           vertical: 'top',
@@ -74,9 +79,11 @@ class MenuAppBar extends React.Component {
                       open={open}
                       onClose={this.handleClose}
                   >
-                      <MenuItem onClick={this.handleClose}>THIS IS A TEST</MenuItem>
+
+                      <MenuItem onClick={this.handleClose}>THIS IS A DIRP</MenuItem>
                       <MenuItem onClick={this.handleClose}>TEST COMPLETE</MenuItem>
-                  </Menu>
+
+                  </Menu2>
                 <MenuIcon />
               </IconButton>
 
@@ -95,7 +102,7 @@ class MenuAppBar extends React.Component {
                   <AccountCircle />
                 </IconButton>
                 <Menu
-                  id="menu-appbar"
+                  id="menu-appbar2"
                   anchorEl={anchorEl}
                   anchorOrigin={{
                     vertical: 'top',
