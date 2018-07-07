@@ -1,6 +1,6 @@
 import React, { Component, Fragment} from 'react';
 import { Header, Footer} from './Layouts/index.js';
-import Exercises from './Exercises';
+import Exercises from './Exercises/index';
 import Dave from './Layouts/Dave.js';
 
 
