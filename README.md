@@ -3,7 +3,21 @@ Code based on walkthrough at:
 https://github.com/jonnyk20/spotify-node-react-starter-kit
 
 ## Usage Notes
-Client & server each have separate readme files with more build details.
+- Client & server each have separate readme files with more build details.
+- Our componentsearch code is now nested under `/componentsearch/client/src/Components`.
+    - Changes to structure (pretty minor)
+        - `/componentsearch/client/src/App.js` is now the primary javascript file called.
+        - call order from application server `localhost:3000':
+            - `/client/public/index.html`->
+            - `/client/src/index.js` ->
+            - `/client/src/App.js` ->
+            - `/client/src/Components/PApp.js`
+        - if you look at `/client/src/App.js`, you will see 
+            - PApp.js is imported at the top of the file
+            - The render function contains a <Fragment>, which contains Papp.js as imported.
+        - I didn't make any other changes to PApp.js, so once it is getting called from App.js the structure is exactly the same :-)
+        
+
 
 ###Running the application
 
