@@ -13,6 +13,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
+
 const styles = {
   root: {
     flexGrow: 1,
@@ -25,6 +26,10 @@ const styles = {
     marginRight: 20,
   },
 };
+
+class Menu2 extends Menu {
+
+}
 
 class MenuAppBar extends React.Component {
   state = {
@@ -51,32 +56,35 @@ class MenuAppBar extends React.Component {
 
     return (
       <div className={classes.root}>
-          {/*<FormGroup>
-          <FormControlLabel
-            control={
-              <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
-            }
-            label={auth ? 'Logout' : 'Login'}
-          />
-        </FormGroup>*/}
           <AppBar position="static">
-
-
           <Toolbar>
             <div>
               <IconButton
                   className={classes.menuButton}
                   color="inherit"
                   onClick={this.handleMenu}
-
                   aria-label="Menu"
               >
+                  <Menu2
+                      id="menu-different"
+                      anchorEl={anchorEl}
+                      anchorOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right',
+                      }}
+                      transformOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right',
+                      }}
+                      open={open}
+                      onClose={this.handleClose}
+                  >
 
+                      <MenuItem onClick={this.handleClose}>THIS IS A DIRP</MenuItem>
+                      <MenuItem onClick={this.handleClose}>TEST COMPLETE</MenuItem>
 
-                <MenuIcon okay/>
-
-
-
+                  </Menu2>
+                <MenuIcon />
               </IconButton>
 
             </div>
@@ -94,7 +102,7 @@ class MenuAppBar extends React.Component {
                   <AccountCircle />
                 </IconButton>
                 <Menu
-                  id="menu-appbar"
+                  id="menu-appbar2"
                   anchorEl={anchorEl}
                   anchorOrigin={{
                     vertical: 'top',
