@@ -1,4 +1,4 @@
-Code based on walkthrough at:
+Code based on walkthrough:
 
 https://github.com/jonnyk20/spotify-node-react-starter-kit
 
