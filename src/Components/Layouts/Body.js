@@ -4,23 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-
-
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import Button from '@material-ui/core/Button';
-
-
 
 const styles = theme => ({
     root: {
@@ -48,8 +31,28 @@ class ListDividers extends React.Component {
         this.setState({ auth: checked });
     };
 
-    handleMenu = event => {
-        window.prompt("Please Enter Playlist Name");
+    createPlaylist = event => {
+
+        var button = document.getElementById("help");
+        if (button.hasAttributes()) {
+            var attrs = button.attributes;
+            var output = "";
+            for(var i = attrs.length - 1; i >= 0; i--) {
+                output += attrs[i].name + "->" + attrs[i].value + "\n";
+            }
+            var result = output;
+        } else {
+            var result = "No attributes to show";
+        }
+        var out = document.createElement("out");
+        out.appendChild(document.createTextNode(result));
+        button.appendChild(out);
+
+       /* var ul = document.getElementById("nav");
+        var li = document.createElement("li");
+        li.appendChild(document.createTextNode(prompt("Enter Playlist Name")));
+        //This will work if I add a ListItem instead of a TextNode
+        ul.appendChild(li);*/
     };
 
     handleClose = () => {
@@ -62,48 +65,15 @@ class ListDividers extends React.Component {
         const open = Boolean(anchorEl);
         return (
             <div className={classes.root}>
-                <List component="nav">
-                    <ListItem button>
-                        <ListItemText primary="1"/>
-                    </ListItem>
-                    <Divider/>
-                    <ListItem button divider>
-                        <ListItemText primary="2"/>
-                    </ListItem>
-                    <ListItem button>
-                        <ListItemText onClick={this.handleClose2}/>
-                        3
-                    </ListItem>
-                    <Divider light/>
+                <List Id="nav">
                     <ListItem button>
                         <ListItemText
                             primary="Create New Playlist"
-                            aria-owns={open ? 'menu-appbar' : null}
-                            aria-haspopup="true"
-                            onClick={this.handleMenu}
+                            onClick={this.createPlaylist}
                             color="inherit"
-
-
                         />
-                        <Menu
-                            id="User-Menu"
-                            anchorEl={anchorEl}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={open}
-                            onClose={this.handleClose}
-                        >
-                            <MenuItem onClick={this.handleClose}>Playlists</MenuItem>
-                            <MenuItem onClick={this.handleClose}>Create New Playlist</MenuItem>
-                        </Menu>
-
                     </ListItem>
+                    <ListItem Id = "help" />
                 </List>
             </div>
         );
