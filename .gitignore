@@ -117,3 +117,4 @@ typings/
 auth-server/authorization_code/secretsconfig.js
 .idea/workspace.xml
 .idea/vcs.xml
+client/src/secretsconfigclient.js
