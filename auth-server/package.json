@@ -12,6 +12,6 @@
   },
   "scripts": {
     "installserverstuff": "npm install",
-    "startserver": "`node authorization_code/app.js`"
+    "startserver": "`/node authorization_code/app.js`"
   }
 }

@@ -1,10 +1,18 @@
 {
   "name": "componentsearchherokubuild",
   "version": "0.0.1",
+  "engines": {
+    "node": "8.9.4",
+    "npm": "6.1.0"
+  },
+  "cacheDirectories": [
+    "client/node_modules",
+    "auth_server/node_modules"],
   "dependencies": {
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "heroku-postbuild": "cd client/ && npm install && react-scripts build && react-scripts build && cd ../auth-server && npm install && `node authorization_code/app.js`"
+    "startserver": "`/auth_server/node authorization_code/app.js`",
+    "heroku-postbuild": "cd client/ && npm install && react-scripts build && react-scripts start && cd ../auth-server && npm install && `node authorization_code/app.js`"
   }
 }
