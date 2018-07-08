@@ -13,6 +13,6 @@
   },
   "scripts": {
     "startserver": "`/auth_server/node authorization_code/app.js`",
-    "heroku-postbuild": "cd ../auth-server && npm install && node authorization_code/app.js && cd client/ && npm install && npm run build && npm start"
+    "heroku-postbuild": "cd auth-server && npm install && node authorization_code/app.js && cd ../client/ && npm install && npm run build && npm start"
   }
 }
