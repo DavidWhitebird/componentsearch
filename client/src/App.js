@@ -53,7 +53,7 @@ class App extends Component {
     render() {
         return (
             <Fragment>
-                <GoogleLogin onSuccess={} onFailure={} clientId={}/>
+                {/*<GoogleLogin onSuccess={} onFailure={} clientId={}/>*/}
                 <Papp/>
                 <h4>/client/src/app.js: </h4>
                 <p>app.render.return.fragment</p>
