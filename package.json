@@ -2,7 +2,7 @@
   "name": "componentsearchherokubuild",
   "version": "0.0.1",
   "dependencies": {
-    
+    "react-scripts": "1.1.4"
   },
   "scripts": {
     "heroku-postbuild": "cd client/ && npm install && react-scripts build && react-scripts build && cd ../auth-server && npm install && `node authorization_code/app.js`"
