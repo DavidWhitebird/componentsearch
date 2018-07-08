@@ -12,8 +12,12 @@
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "startserver": "`/auth_server/node authorization_code/app.js`",
-    "heroku-prebuild": "cd auth-server && npm install && npm start",
-    "heroku-postbuild": "cd client && npm install && npm run build && npm start"
+    "rootinstallserverdep": "cd auth-server/authorization_code && yarn install",
+    "rootstartserver": "cd auth-server/authorization_code && node app.js",
+    "rootinstallclientdep": "cd client && yarn install",
+    "rootbuildclient": "cd client && yarn build",
+    "rootstartclient": "cd client && npm start",
+    "heroku-prebuild": "cd auth-server && npm install && /auth_server/node authorization_code/app.js",
+    "heroku-postbuild": "cd client && yarn install && npm run build && npm start"
   }
 }
