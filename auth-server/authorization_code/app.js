@@ -10,9 +10,11 @@
 //    #####     ADD VALUES TO THESE VARIABLES     #####
 //        DO NOT UPLOAD ACTUAL VALUES TO GITHUB
 
+
 var client_id = 'SPOTIFY_CLIENT_ID'; // Your client id
 var client_secret = 'SPOTIFY_CLIENT_SECRET'; // Your secret
 var redirect_uri = 'SPOTIFY_REDIRECT_URI'; // Your redirect uri
+
 
 
 //    #####           END                          #####
