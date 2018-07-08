@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "engines": {
     "node": "8.9.4",
-    "npm": "6.1.0"
+    "npm": "6.1.0",
+    "yarn": "1.7.0"
   },
   "cacheDirectories": [
     "client/node_modules",
