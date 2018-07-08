@@ -8,7 +8,8 @@
     "react-scripts": "1.1.4",
     "@material-ui/core": "^1.1.0",
     "@material-ui/icons": "^1.1.0",
-    "spotify-web-api-js": "^0.24.0"
+    "spotify-web-api-js": "^0.24.0",
+    "react-google-login": "^3.2.1"
   },
   "scripts": {
     "installclientstuff": "npm install",

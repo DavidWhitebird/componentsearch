@@ -4,6 +4,7 @@ import React, { Component, Fragment } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Papp from './Components/PApp.js';
+import GoogleLogin from 'react-google-login';
 
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
@@ -52,6 +53,7 @@ class App extends Component {
     render() {
         return (
             <Fragment>
+                <GoogleLogin onSuccess={} onFailure={} clientId={}/>
                 <Papp/>
                 <h4>/client/src/app.js: </h4>
                 <p>app.render.return.fragment</p>
