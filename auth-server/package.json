@@ -21,10 +21,10 @@
     "nodemon": "^1.11.0"
   },
   "scripts": {
+    "build": "babel . --ignore node_modules, build --out-dir build",
     "start": "nodemon -r babel-register authorization_code/app.js",
     "startserver": "nodemon -r babel-register authorization_code/app.js",
     "installdep": "yarn install",
-    "build": "babel . --ignore node_modules, build --out-dir build",
     "build2": "babel lib -d dist --presets env",
     "start:prod": "node build/authorization_code/app.js"
   }
