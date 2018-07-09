@@ -1,0 +1,25 @@
+{
+  "name": "componentsearchherokubuild",
+  "version": "0.0.5",
+  "main": "index.js",
+  "repository": {},
+  "engines": {
+    "node": "8.9.3",
+    "npm": "6.1.0",
+    "yarn": "1.7.0"
+  },
+  "dependencies": {
+    "concurrently":"3.6.0"
+  },
+  "cacheDirectories": [
+    "client/node_modules",
+    "auth-server/node_modules"
+  ],
+  "scripts": {
+    "dev": "nf start -p 3030 --procfile Procfile.dev",
+    "clientserver": "client/node_modules/.bin/serve",
+    "buildclient": "cd client && yarn build",
+    "install": "(cd client && yarn) && (cd auth-server && yarn)",
+    "start": "concurrently \"cd client && PORT=5000 yarn start\" \"cd auth-server && PORT=3030 yarn start\""
+  }
+}

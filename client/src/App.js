@@ -22,9 +22,21 @@ class App extends Component {
         }
         this.state = {
             loggedIn: token ? true : false,
-            nowPlaying: { name: 'Not Checked', albumArt: '' }
+            nowPlaying: { name: 'Not Checked', albumArt: '' },
+            //tag: [additions] entry cities
+            cities: {cities: []}
         }
     }
+    //tag: [additions]
+    async componentDidMount() {
+        const response = await fetch('/cities');
+        const cities   = await response.json()
+
+        this.setState({cities: cities})
+    }
+
+    //tag: end [additions]
+
     /*Now we just need to pull the token from the query sting into our react app and we can use it. There are many ways to do this, but I’m lazy so I copied the function getHashParams from the example code that we cloned (found in auth-server/authorization_code/public/index.html), and made a slight change just to silence create-react-app’s picky linter. The function returns an object with the parameters as properties.*/
     getHashParams() {
         var hashParams = {};
@@ -52,35 +64,41 @@ class App extends Component {
 
 
     render() {
-        return (
-            <Fragment>
-                {/*<GoogleLogin onSuccess={} onFailure={} clientId={}/>*/}
-                <Papp/>
-                <h4>/client/src/app.js: </h4>
-                <p>app.render.return.fragment</p>
-                <div
-                    className='App' >
-                    <a href='http://localhost:8888'> Login to Spotify </a>
-                </div>
-                <div>
-                    Now Playing: { this.state.nowPlaying.name }
-                </div>
-                <div>
-                    <img src={this.state.nowPlaying.albumArt}
-                         style={{ height: 150 }}
-                         alt="Smiley face"
-                    />
-                </div>
+        return <Fragment>
+            {/*<GoogleLogin onSuccess={} onFailure={} clientId={}/>*/}
+            <Papp/>
+            <h4>/client/src/app.js: </h4>
+            <p>app.render.return.fragment</p>
+            <div
+                className='App'>
+                <a href='http://localhost:3030'> Login to Spotify </a>
+            </div>
+            <div>
+                Now Playing: {this.state.nowPlaying.name}
+            </div>
+            <div>
+                <img src={this.state.nowPlaying.albumArt}
+                     style={{height: 150}}
+                     alt="Smiley face"
+                />
+            </div>
 
-                { this.state.loggedIn &&
-                <button onClick={() => this.getNowPlaying()}>
-                    Check Now Playing
-                </button>
-                }
-
-            </Fragment>
-    )
+            {this.state.loggedIn &&
+            <button onClick={() => this.getNowPlaying()}>
+                Check Now Playing
+            </button>
+            }
+            /*
+            <div>
+                <ul>
+                    {this.state.cities.map(city => {
+                        return <li key={city.name}><b>{city.name}</b>: {city.population}</li>
+                    })}
+                </ul>
+            </div>
+            */
+        </Fragment>
     }
 }
-console.log('something reached the end of client/app.js')
+console.log('something called the console.log() at the end of client/app.js');
 export default App;

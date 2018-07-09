@@ -7,7 +7,7 @@
 /coverage
 
 # production
-/build
+# /build #leaving this in for heroku
 
 # misc
 .DS_Store
@@ -20,7 +20,7 @@
 
 
 
-/client/build/*
+# /client/build/* ## leaving in for heroku
 /.idea/*
 
 # Created by https://www.gitignore.io/api/node
@@ -58,7 +58,7 @@ bower_components
 .lock-wscript
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
-build/Release
+# build/Release
 
 # Dependency directories
 node_modules/
@@ -118,3 +118,4 @@ auth-server/authorization_code/secretsconfig.js
 .idea/workspace.xml
 .idea/vcs.xml
 client/src/secretsconfigclient.js
+auth-server/build/authorization_code/secretsconfig.js

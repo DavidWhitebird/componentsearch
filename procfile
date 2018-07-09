@@ -1,2 +1,2 @@
-web: cd client && yarn install && yarn serve -s build
-api: cd auth-server && yarn install && node authorization_code/app.js
+web: cd client && npm start
+api: npm run server
