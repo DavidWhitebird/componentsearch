@@ -29,6 +29,14 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
 
+//tag: [additions]
+import path from 'path';
+import bodyParser from 'body-parser';
+import express from 'express';
+// get reference to the client build directory
+const staticFiles = express.static(path.join(__dirname, '../../client/build'));
+
+
 
 /**
  * Generates a random string containing numbers and letters
@@ -50,8 +58,10 @@ var stateKey = 'spotify_auth_state';
 var app = express();
 
 app.use(express.static(__dirname + '/public'))
-   .use(cors())
-   .use(cookieParser());
+    .use(cors())
+    .use(bodyParser.json())
+    .use(bodyParser.urlencoded({extended: false}))
+
 
 //tag: [additions]
 const router = express.Router()
@@ -64,7 +74,12 @@ router.get('/cities', (req, res) => {
     res.json(cities)
 })
 app.use(router)
-app.set('port', (process.env))
+app.set('port', (process.env || 3030));
+app.use('/*', staticFiles);
+app.listen(app.get('port'), () => {
+    console.log(`Listening on ${app.get('port')}`)
+})
+
 
 
 //tag: end [additions]
