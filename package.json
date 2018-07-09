@@ -10,7 +10,6 @@
     "client/node_modules",
     "auth-server/node_modules"],
   "scripts": {
-    "preinstall": "cd auth-server && yarn install && node authorization_code/app.js",
     "start": "cd client && yarn install && yarn serve -s build",
     "heroku-postbuild": "cd auth-server && yarn install && node authorization_code/app.js"
   }
