@@ -9,10 +9,11 @@
     "client/node_modules",
     "auth_server/node_modules"],
   "dependencies": {
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "concurrently":"3.6.0"
   },
   "scripts": {
-    "startserver": "`/auth_server/node authorization_code/app.js`",
-    "heroku-postbuild": "cd client/ && npm install && react-scripts build && react-scripts start && cd ../auth-server && npm install && `node authorization_code/app.js`"
+    "install": "cd client && yarn",
+    "start": "concurrently \"cd client && yarn start\" \"cd auth-server && node authorization_code/app.js\""
   }
 }
