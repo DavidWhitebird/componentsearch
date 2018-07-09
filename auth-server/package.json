@@ -11,7 +11,7 @@
     "request": "~2.83.0"
   },
   "scripts": {
-    "installserverstuff": "npm install",
-    "startserver": "`/node authorization_code/app.js`"
+    "installserverstuff": "yarn install",
+    "startserver": "node authorization_code/app.js"
   }
 }

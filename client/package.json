@@ -9,10 +9,11 @@
     "@material-ui/core": "^1.1.0",
     "@material-ui/icons": "^1.1.0",
     "spotify-web-api-js": "^0.24.0",
-    "react-google-login": "^3.2.1"
+    "react-google-login": "^3.2.1",
+    "typeface-roboto": "^0.0.54"
   },
   "scripts": {
-    "installclientstuff": "npm install",
+    "installclientstuff": "yarn install",
     "buildclient": "react-scripts build",
     "startclient": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
