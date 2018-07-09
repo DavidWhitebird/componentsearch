@@ -1,10 +1,11 @@
 /*some function descriptions from https://medium.com/@jonnykalambay/now-playing-using-spotifys-awesome-api-with-react-7db8173a7b13*/
 
 import React, { Component, Fragment } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Papp from './Components/PApp.js';
-import GoogleLogin from 'react-google-login';
+
+/*import logo from './logo.svg';
+import GoogleLogin from 'react-google-login';*/
 
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
@@ -65,7 +66,10 @@ class App extends Component {
                     Now Playing: { this.state.nowPlaying.name }
                 </div>
                 <div>
-                    <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/>
+                    <img src={this.state.nowPlaying.albumArt}
+                         style={{ height: 150 }}
+                         alt="Smiley face"
+                    />
                 </div>
 
                 { this.state.loggedIn &&

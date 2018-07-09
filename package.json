@@ -4,21 +4,14 @@
   "engines": {
     "node": "8.9.4",
     "npm": "6.1.0",
-    "yarn": "1.7.0"
+    "yarn":"^1.7.0"
   },
   "cacheDirectories": [
     "client/node_modules",
-    "auth_server/node_modules"],
-  "dependencies": {
-    "react-scripts": "1.1.4"
-  },
+    "auth-server/node_modules"],
   "scripts": {
-    "start": " yarn run rootinstallserverdep && yarn run rootstartserver && yarn run startserver",
-    "heroku-postbuild": "yarn run rootinstallclientdep && yarn run rootbuildclient && yarn run rootstartclient",
-    "rootinstallserverdep": "cd auth-server/authorization_code && yarn install",
-    "rootstartserver": "cd auth-server/authorization_code && node app.js",
-    "rootinstallclientdep": "cd client && yarn install",
-    "rootbuildclient": "cd client && yarn build",
-    "rootstartclient": "cd client && npm start"
+    "preinstall": "cd auth-server && yarn install && node authorization_code/app.js",
+    "start": "cd client && yarn install && yarn serve -s build",
+    "heroku-postbuild": "cd auth-server && yarn install && node authorization_code/app.js"
   }
 }
