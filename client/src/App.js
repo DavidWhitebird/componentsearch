@@ -82,5 +82,5 @@ class App extends Component {
     )
     }
 }
-
+console.log('something reached the end of client/app.js')
 export default App;
