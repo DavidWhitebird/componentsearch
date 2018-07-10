@@ -7,11 +7,14 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
+/*import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
+import FormGroup from '@material-ui/core/FormGroup';*/
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+
+
+
 
 
 const styles = {
@@ -27,15 +30,16 @@ const styles = {
   },
 };
 
-class Menu2 extends Menu {
-
-}
-
-class MenuAppBar extends React.Component {
-  state = {
-    auth: true,
-    anchorEl: null,
-  };
+class Header extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            date: new Date(),
+            auth: true,
+            anchorEl: null,
+            username: 'Anonymous'
+        }
+    };
 
   handleChange = (event, checked) => {
     this.setState({ auth: checked });
@@ -65,7 +69,7 @@ class MenuAppBar extends React.Component {
                   onClick={this.handleMenu}
                   aria-label="Menu"
               >
-                  <Menu2
+                  <Menu
                       id="menu-different"
                       anchorEl={anchorEl}
                       anchorOrigin={{
@@ -83,13 +87,13 @@ class MenuAppBar extends React.Component {
                       <MenuItem onClick={this.handleClose}>THIS IS A DIRP</MenuItem>
                       <MenuItem onClick={this.handleClose}>TEST COMPLETE</MenuItem>
 
-                  </Menu2>
+                  </Menu>
                 <MenuIcon />
               </IconButton>
 
             </div>
             <Typography variant="title" color="inherit" className={classes.flex}>
-              Insert User Name Here
+                name is {this.state.username}.
             </Typography>
             {auth && (
               <div>
@@ -127,8 +131,8 @@ class MenuAppBar extends React.Component {
   }
 }
 
-MenuAppBar.propTypes = {
+Header.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MenuAppBar);
+export default withStyles(styles)(Header);
