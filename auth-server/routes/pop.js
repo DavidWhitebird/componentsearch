@@ -29,13 +29,16 @@ Defines and implements the Mongopop Restful API by adding 'get' and 'post'
 routes to the router.
 */
 
-var getIP = require('external-ip')();
+
 var request = require("request");
 var express = require('express');
 var router 	= express.Router();
 
-var config = require('../config.js');
-var DB = require('../javascripts/db');
+
+
+var getIP = require('external-ip')();
+var config = require('./popconfig.js');
+var DB = require('./popdb');
 
 var publicIP; // IP address of the server running the Mongopop service
 

@@ -9,7 +9,6 @@
 
 //    tag:[additions]
 var secrets = require('./secretsconfig.js');
-
     // end: [additions]
 
 //    #####     ADD VALUES TO THESE VARIABLES     #####
@@ -30,6 +29,17 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+//  tag:  [additions]
+
+var path = require('path');
+var cities = require('../routes/cities');
+var pop = require('../routes/pop');
+
+
+
+
+
+//  tag:  end additions
 
 
 
@@ -54,8 +64,18 @@ var stateKey = 'spotify_auth_state';
 
 spotifyapp.use(express.static(__dirname + '/public'))
    .use(cors())
-   .use(cookieParser());
-spotifyapp.use(bodyParser.json());
+   .use(cookieParser())
+    // additions
+   //.use(logger('dev'))
+   .use(bodyParser.json())
+   .use(bodyParser.urlencoded({ extended: true }))
+   .use(express.static(path.join(__dirname, 'public')))
+   .use('/cities', cities)
+   .use('/pop', pop);
+// additions
+spotifyapp.get('/cities', cities)
+
+
 
 spotifyapp.get('/login', function(req, res) {
 
