@@ -4,6 +4,7 @@ import React, { Component, Fragment } from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import Papp from './Components/PApp.js';
+import { Header, Footer, Exercises, Dave} from './Components/Layouts/index.js';
 //import GoogleLogin from 'react-google-login';
 //import secrets from 'secretsconfigclient';
 
@@ -56,7 +57,17 @@ class App extends Component {
             })
     }
 
-
+    getthings(){
+        spotifyApi.getRecommendations()
+            .then((response) => {
+                this.setState({
+                    nowPlaying: {
+                        name: response.item.name,
+                        albumArt: response.item.album.images[0].url
+                    }
+                });
+            })
+    }
 
 
 
@@ -98,7 +109,8 @@ class App extends Component {
 {/*
                 <GoogleLogin onSuccess={} onFailure={} clientId={}/>
 */}
-                <Papp/>
+                <Header
+                    username={this.state.currentUser.name}/>
                 <h4>/client/src/app.js: </h4>
                 <p>app.render.return.fragment</p>
                 <div
