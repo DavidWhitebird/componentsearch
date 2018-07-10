@@ -22,16 +22,21 @@ class App extends Component {
         }
         this.state = {
             loggedIn: token ? true : false,
-            nowPlaying: { name: 'Not Checked', albumArt: '' },
-            currentUser: { id: 'not created', name: 'Not added', },
+            nowPlaying: {name: 'Not Checked', albumArt: ''},
+            currentUser: {id: 'not created', name: 'Not added',},
+            //additions
+            cities: {cities: []}
         }
+
+
     }
+
     /*Now we just need to pull the token from the query sting into our react app and we can use it. There are many ways to do this, but I’m lazy so I copied the function getHashParams from the example code that we cloned (found in auth-server/authorization_code/public/index.html), and made a slight change just to silence create-react-app’s picky linter. The function returns an object with the parameters as properties.*/
     getHashParams() {
         var hashParams = {};
         var e, r = /([^&;=]+)=?([^&;]*)/g,
             q = window.location.hash.substring(1);
-        e = r.exec(q)
+        e = r.exec(q);
         while (e) {
             hashParams[e[1]] = decodeURIComponent(e[2]);
             e = r.exec(q);
@@ -50,6 +55,11 @@ class App extends Component {
                 });
             })
     }
+
+
+
+
+
     createPlaylist(){
         spotifyApi.getMyCurrentPlaybackState()
             .then((response) => {
@@ -103,7 +113,7 @@ class App extends Component {
                     <h4>User ID: { this.state.currentUser.id}</h4>
                 </div>
                 <div>
-                    <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/>
+                    <img src={this.state.nowPlaying.albumArt} alt="album art" style={{ height: 150 }}/>
                 </div>
 
                 { this.state.loggedIn &&

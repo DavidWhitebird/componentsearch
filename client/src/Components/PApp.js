@@ -13,7 +13,7 @@ export default class extends Component {
 			
 				<Footer/>
 
-				{/*<Dave />*/}
+				<Dave />
 		</Fragment>
 	}
 }
