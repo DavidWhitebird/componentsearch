@@ -37,7 +37,7 @@ class Header extends React.Component {
             date: new Date(),
             auth: true,
             anchorEl: null,
-            username: 'Anonymous'
+            username: 'Header unchanged username'
         }
     };
 
