@@ -111,8 +111,6 @@ class App extends Component {
 */}
                 <Header
                     username={this.state.currentUser.name}/>
-                <h4>/client/src/app.js: </h4>
-                <p>app.render.return.fragment</p>
                 <div
                     className='App' >
                     <a href='http://localhost:8888'> Login to Spotify </a>
@@ -125,7 +123,7 @@ class App extends Component {
                     <h4>User ID: { this.state.currentUser.id}</h4>
                 </div>
                 <div>
-                    <img src={this.state.nowPlaying.albumArt} alt="album art" style={{ height: 150 }}/>
+                    <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/>
                 </div>
 
                 { this.state.loggedIn &&
