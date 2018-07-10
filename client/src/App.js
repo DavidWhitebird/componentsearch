@@ -64,58 +64,10 @@ class App extends Component {
                         id: response.id,
                         name: response.display_name
                     }
-
-
                 });
-                //console.log(response);
             });
     }
-
-    getthings(){
-        spotifyApi.getRecommendations()
-            .then((response) => {
-                this.setState({
-                    nowPlaying: {
-                        name: response.item.name,
-                        albumArt: response.item.album.images[0].url
-                    }
-                });
-            })
-    }
-
-
-
-    createPlaylist(){
-        spotifyApi.getMyCurrentPlaybackState()
-            .then((response) => {
-                this.setState({
-                    nowPlaying: {
-                        name: response.item.name,
-                        albumArt: response.item.album.images[0].url
-                    }
-                });
-            })
-    }
     
-    
-
-
-/*                this.setState({
-                    currentUser:{
-                        name: response.
-                    }
-                    nowPlaying: {
-                        name: response.item.name,
-                        albumArt: response.item.album.images[0].url
-                    }*/
-
-
-    getUserEverything(){
-        this.setState.currentUser({
-            name: spotifyApi.get
-        })
-    }
-
 
     render() {
         return (
