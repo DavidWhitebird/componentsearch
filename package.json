@@ -14,6 +14,6 @@
   },
   "scripts": {
     "install": "cd client && yarn",
-    "start": "concurrently \"cd client && yarn start\" \"cd auth-server && node authorization_code/app.js\""
+    "start": "concurrently \"cd client && yarn start\" \"cd auth-server && node authorization_code/spotifyapp.js\""
   }
 }

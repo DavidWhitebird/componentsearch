@@ -1,10 +1,11 @@
 /*some function descriptions from https://medium.com/@jonnykalambay/now-playing-using-spotifys-awesome-api-with-react-7db8173a7b13*/
 
 import React, { Component, Fragment } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import Papp from './Components/PApp.js';
-import GoogleLogin from 'react-google-login';
+//import GoogleLogin from 'react-google-login';
+//import secrets from 'secretsconfigclient';
 
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
@@ -60,7 +61,7 @@ class App extends Component {
                 });
             })
     }
-    getUserName(){
+ /*   getUserName(){
         spotifyApi.getMe()
             .then((response) => {
                 this.setState({
@@ -78,7 +79,7 @@ class App extends Component {
         this.setState.currentUser({
             name: spotifyApi.get
         })
-    }
+    }*/
 
 
     render() {

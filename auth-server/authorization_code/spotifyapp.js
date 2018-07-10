@@ -7,15 +7,16 @@
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
 
+//    tag:[additions]
+var secrets = require('./secretsconfig.js');
+
+    // end: [additions]
+
 //    #####     ADD VALUES TO THESE VARIABLES     #####
-//
 
-
-var client_id = 'de11a78ad2b94a5094ee825ef4088a5e'; // Your client id
-var client_secret = '53f120e7b4c344289c41f89620d6ea93'; // Your secret
-var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
-
-
+var client_id = secrets.spotify_client_id; // Your client id
+var client_secret = secrets.spotify_client_secret; // Your secret
+var redirect_uri = secrets.spotify_redirect_uri; // Your redirect uri
 
 //    #####           END                          #####
 
@@ -27,6 +28,8 @@ var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+
 
 
 
@@ -47,13 +50,14 @@ var generateRandomString = function(length) {
 
 var stateKey = 'spotify_auth_state';
 
-var app = express();
+ var spotifyapp = express();
 
-app.use(express.static(__dirname + '/public'))
+spotifyapp.use(express.static(__dirname + '/public'))
    .use(cors())
    .use(cookieParser());
+spotifyapp.use(bodyParser.json());
 
-app.get('/login', function(req, res) {
+spotifyapp.get('/login', function(req, res) {
 
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
@@ -73,7 +77,7 @@ app.get('/login', function(req, res) {
     }));
 });
 
-app.get('/callback', function(req, res) {
+spotifyapp.get('/callback', function(req, res) {
 
   // your application requests refresh and access tokens
   // after checking the state parameter
@@ -135,7 +139,7 @@ app.get('/callback', function(req, res) {
   }
 });
 
-app.get('/refresh_token', function(req, res) {
+spotifyapp.get('/refresh_token', function(req, res) {
 
   // requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
@@ -160,4 +164,4 @@ app.get('/refresh_token', function(req, res) {
 });
 
 console.log('Listening on 8888');
-app.listen(8888);
+spotifyapp.listen(8888);
