@@ -24,7 +24,7 @@ class App extends Component {
         this.state = {
             loggedIn: token ? true : false,
             nowPlaying: {name: 'Not Checked', albumArt: ''},
-            currentUser: {id: 'not created', name: 'Not added',},
+            currentuser: {id: 'not created', name: 'Not added',},
             //additions
             cities: {cities: []}
         }
@@ -56,6 +56,20 @@ class App extends Component {
                 });
             })
     }
+    getUserName() {
+        spotifyApi.getMe()
+            .then((response) => {
+                this.setState({
+                    currentuser: {
+                        id: response.id,
+                        name: response.display_name
+                    }
+
+
+                });
+                //console.log(response);
+            });
+    }
 
     getthings(){
         spotifyApi.getRecommendations()
@@ -82,25 +96,25 @@ class App extends Component {
                 });
             })
     }
- /*   getUserName(){
-        spotifyApi.getMe()
-            .then((response) => {
-                this.setState({
+    
+    
+
+
+/*                this.setState({
                     currentUser:{
                         name: response.
                     }
                     nowPlaying: {
                         name: response.item.name,
                         albumArt: response.item.album.images[0].url
-                    }
-                });
-            })
-    }
+                    }*/
+
+
     getUserEverything(){
         this.setState.currentUser({
             name: spotifyApi.get
         })
-    }*/
+    }
 
 
     render() {
@@ -110,7 +124,10 @@ class App extends Component {
                 <GoogleLogin onSuccess={} onFailure={} clientId={}/>
 */}
                 <Header
-                    username={this.state.currentUser.name}/>
+                    username={this.state.currentuser.name}/>
+                <button onClick={() => this.getUserName()}>
+                    Get User Name
+                </button>
                 <div
                     className='App' >
                     <a href='http://localhost:8888'> Login to Spotify </a>
@@ -119,8 +136,8 @@ class App extends Component {
                     Now Playing: { this.state.nowPlaying.name }
                 </div>
                 <div>
-                    <h3>Current User: { this.state.currentUser.name}</h3>
-                    <h4>User ID: { this.state.currentUser.id}</h4>
+                    <h3>Current User: { this.state.currentuser.name}</h3>
+                    <h4>User ID: { this.state.currentuser.id}</h4>
                 </div>
                 <div>
                     <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/>
