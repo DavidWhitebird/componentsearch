@@ -21,7 +21,8 @@ class App extends Component {
         }
         this.state = {
             loggedIn: token ? true : false,
-            nowPlaying: { name: 'Not Checked', albumArt: '' }
+            nowPlaying: { name: 'Not Checked', albumArt: '' },
+            currentUser: { id: 'not created', name: 'Not added', },
         }
     }
     /*Now we just need to pull the token from the query sting into our react app and we can use it. There are many ways to do this, but I’m lazy so I copied the function getHashParams from the example code that we cloned (found in auth-server/authorization_code/public/index.html), and made a slight change just to silence create-react-app’s picky linter. The function returns an object with the parameters as properties.*/
@@ -36,7 +37,7 @@ class App extends Component {
         }
         return hashParams;
     }
-    /*Write a function called getNowPlaying inside of the App Class to make the API request. This function will use the one of the many spotifyApi methods to make a request and creates a promise. We then use the response data to set state. The code below is already structured access the right data in the response, but I highly suggest you experiment by looking at the entire response object, either by logging it to the console or by checking the network tab in your dev tools*/
+    /*Write a function called getNowPlaying inside of the App Class to make the API request. This function will use the one of the many spotify Api methods to make a request and creates a promise. We then use the response data to set state. The code below is already structured access the right data in the response, but I highly suggest you experiment by looking at the entire response object, either by logging it to the console or by checking the network tab in your dev tools*/
     getNowPlaying(){
         spotifyApi.getMyCurrentPlaybackState()
             .then((response) => {
@@ -47,6 +48,36 @@ class App extends Component {
                     }
                 });
             })
+    }
+    createPlaylist(){
+        spotifyApi.getMyCurrentPlaybackState()
+            .then((response) => {
+                this.setState({
+                    nowPlaying: {
+                        name: response.item.name,
+                        albumArt: response.item.album.images[0].url
+                    }
+                });
+            })
+    }
+    getUserName(){
+        spotifyApi.getMe()
+            .then((response) => {
+                this.setState({
+                    currentUser:{
+                        name: response.
+                    }
+                    nowPlaying: {
+                        name: response.item.name,
+                        albumArt: response.item.album.images[0].url
+                    }
+                });
+            })
+    }
+    getUserEverything(){
+        this.setState.currentUser({
+            name: spotifyApi.get
+        })
     }
 
 
@@ -65,6 +96,10 @@ class App extends Component {
                 </div>
                 <div>
                     Now Playing: { this.state.nowPlaying.name }
+                </div>
+                <div>
+                    <h3>Current User: { this.state.currentUser.name}</h3>
+                    <h4>User ID: { this.state.currentUser.id}</h4>
                 </div>
                 <div>
                     <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/>
