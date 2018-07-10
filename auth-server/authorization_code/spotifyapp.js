@@ -163,5 +163,4 @@ spotifyapp.get('/refresh_token', function(req, res) {
   });
 });
 
-console.log('Listening on 8888');
-spotifyapp.listen(8888);
+module.exports = spotifyapp;
