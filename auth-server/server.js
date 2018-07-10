@@ -8,8 +8,8 @@
  */
 
 //    tag:[additions]
-var secrets = require('./authorization_code/secretsconfig.js');
-var spot = require('./authorization_code/spotifyapp.js');
+var secrets = require('./secretsconfig.js');
+var spot = require('./authorization_code/spotifyapp');
 
 // end: [additions]
 
@@ -21,7 +21,7 @@ var redirect_uri = secrets.spotify_redirect_uri; // Your redirect uri
 
 //    #####           END                          #####
 
-spot();
+
 
 
 var express = require('express'); // Express web server framework
@@ -51,14 +51,14 @@ var generateRandomString = function(length) {
 
 var stateKey = 'spotify_auth_state';
 
-var serverapp = express();
+var spotifyapp = express();
 
-serverapp.use(express.static(__dirname + '/public'))
+spotifyapp.use(express.static(__dirname + '/public'))
     .use(cors())
     .use(cookieParser());
-serverapp.use(bodyParser.json());
+spotifyapp.use(bodyParser.json());
 
-serverapp.get('/login', function(req, res) {
+spotifyapp.get('/login', function(req, res) {
 
     var state = generateRandomString(16);
     res.cookie(stateKey, state);
@@ -78,7 +78,7 @@ serverapp.get('/login', function(req, res) {
         }));
 });
 
-serverapp.get('/callback', function(req, res) {
+spotifyapp.get('/callback', function(req, res) {
 
     // your application requests refresh and access tokens
     // after checking the state parameter
@@ -140,7 +140,7 @@ serverapp.get('/callback', function(req, res) {
     }
 });
 
-serverapp.get('/refresh_token', function(req, res) {
+spotifyapp.get('/refresh_token', function(req, res) {
 
     // requesting access token from refresh token
     var refresh_token = req.query.refresh_token;
@@ -165,4 +165,4 @@ serverapp.get('/refresh_token', function(req, res) {
 });
 
 console.log('Listening on 8888');
-serverapp.listen(8888);
+spotifyapp.listen(8888);
