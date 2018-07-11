@@ -69,7 +69,7 @@ class App extends Component {
             });
     }
     doathing(){
-        spotifyApi.createPlaylist(this.state.currentuser.id, spotifyMethods.c)
+        spotifyApi.createPlaylist(this.state.currentuser.id, spotifyMethods.prototype.createJsonPlaylistParameter())
     }
 
     render() {
