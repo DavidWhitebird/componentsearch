@@ -2,9 +2,7 @@
   "name": "componentsearch",
   "version": "0.0.1",
   "engines": {
-    "node": "8.9.3",
-    "npm": "6.1.0",
-    "yarn": "1.7.0"
+    "node": "8.9.3"
   },
   "cacheDirectories": [
     "client/node_modules",
