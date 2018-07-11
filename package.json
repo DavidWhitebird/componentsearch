@@ -12,7 +12,7 @@
     "concurrently":"3.6.0"
   },
   "scripts": {
-    "build": "cd client && yarn install",
+    "build": "cd client && yarn build",
     "installrootdep": "yarn install",
     "installserverdep": "cd auth-server && yarn install",
     "installclientdep": "cd client && yarn install",
