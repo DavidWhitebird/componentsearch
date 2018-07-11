@@ -11,6 +11,7 @@ import spotifyMethods from './spotifyMethods';
 
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
+var playlistJsonTemplate = {employees: [], attributes: [], pageSize: 2, links: {}};
 
 
 class App extends Component {
@@ -68,8 +69,18 @@ class App extends Component {
                 });
             });
     }
+    createJsonPlaylistParameter() {
+        const plJSON = {
+            "name": prompt('Enter Playlist Name:')
+        }
+        var MyJSON = JSON.stringify(plJSON);
+        alert(plJSON);
+        return MyJSON;
+    }
+
+
     doathing(){
-        spotifyApi.createPlaylist(this.state.currentuser.id, spotifyMethods.prototype.createJsonPlaylistParameter())
+        spotifyApi.createPlaylist(this.state.currentuser.id, this.createJsonPlaylistParameter())
     }
 
     render() {
@@ -78,6 +89,7 @@ class App extends Component {
 {/*
                 <GoogleLogin onSuccess={} onFailure={} clientId={}/>
 */}
+                <Papp/>
                 <Header
                     username={this.state.currentuser.name}/>
                 <button onClick={() => this.getUserName()}>

@@ -12,9 +12,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';*/
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-
-
-
+import ListItemComposition from './Menues';
 
 
 const styles = {
@@ -40,6 +38,8 @@ class Header extends React.Component {
             username: 'Header unchanged username'
         }
     };
+
+
 
   handleChange = (event, checked) => {
     this.setState({ auth: checked });
