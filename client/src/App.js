@@ -1,15 +1,21 @@
 /*some function descriptions from https://medium.com/@jonnykalambay/now-playing-using-spotifys-awesome-api-with-react-7db8173a7b13*/
 
 import React, { Component, Fragment } from 'react';
-//import logo from './logo.svg';
 import './App.css';
-import Papp from './Components/PApp.js';
 import { Header, Footer, Exercises, Dave} from './Components/Layouts/index.js';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import SpotifyWebApi from 'spotify-web-api-js';
+import 'typeface-roboto';
+import Typography from '@material-ui/core/Typography';
+//import logo from './logo.svg';
+//import Papp from './Components/PApp.js';
 //import GoogleLogin from 'react-google-login';
 //import secrets from 'secretsconfigclient';
-import spotifyMethods from './spotifyMethods';
+//import spotifyMethods from './spotifyMethods';
 
-import SpotifyWebApi from 'spotify-web-api-js';
+
+
+
 const spotifyApi = new SpotifyWebApi();
 var playlistJsonTemplate = {employees: [], attributes: [], pageSize: 2, links: {}};
 
@@ -86,10 +92,8 @@ class App extends Component {
     render() {
         return (
             <Fragment>
-{/*
-                <GoogleLogin onSuccess={} onFailure={} clientId={}/>
-*/}
-                <Papp/>
+                <CssBaseline />
+                {/*<GoogleLogin onSuccess={} onFailure={} clientId={}/>*/}
                 <Header
                     username={this.state.currentuser.name}/>
                 <button onClick={() => this.getUserName()}>
@@ -99,17 +103,21 @@ class App extends Component {
                     className='App' >
                     <a href='http://localhost:8888'> Login to Spotify </a>
                 </div>
-                <div>
-                    Now Playing: { this.state.nowPlaying.name }
-                </div>
-                <div>
-                    <h3>Current User: { this.state.currentuser.name}</h3>
-                    <h4>User ID: { this.state.currentuser.id}</h4>
-                </div>
-                <div>
-                    <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/>
-                </div>
+                { this.state.loggedIn &&
+                <button onClick={() => this.getNowPlaying()}>
+                    Check Now Playing
 
+                <Typography>
+                    <div>
+                        <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/>
+                    </div>
+                    <p>Now Playing: { this.state.nowPlaying.name }</p>
+                    <p>Current User: { this.state.currentuser.name}</p>
+                    <p>User ID: { this.state.currentuser.id}</p>
+
+                </Typography>
+
+                </button>}
                 { this.state.loggedIn &&
                 <button onClick={() => this.getNowPlaying()}>
                     Check Now Playing
