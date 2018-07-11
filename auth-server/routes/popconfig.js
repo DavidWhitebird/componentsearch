@@ -1,5 +1,5 @@
 var config = {
-    expressPort: 3000,
+    expressPort: 5000,
     client: {
         mongodb: {
             defaultDatabase: "mongopop",

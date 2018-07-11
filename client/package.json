@@ -2,6 +2,7 @@
   "name": "componentsearchclient",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8888",
   "dependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
@@ -10,12 +11,17 @@
     "@material-ui/icons": "^1.1.0",
     "spotify-web-api-js": "^0.24.0",
     "react-google-login": "^3.2.1",
-    "typeface-roboto": "^0.0.54"
+    "typeface-roboto": "^0.0.54",
+    "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0",
+    "serve":"9.2.0"
   },
   "scripts": {
     "installclientstuff": "yarn install",
     "buildclient": "react-scripts build",
     "startclient": "react-scripts start",
+    "buildproduction": "yarn run build",
+    "runproduction": "serve -s build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "build": "react-scripts build",
@@ -27,8 +33,6 @@
     "@storybook/react": "^3.4.8",
     "@storybook/addon-actions": "^3.4.8",
     "@storybook/addon-links": "^3.4.8",
-    "@storybook/addons": "^3.4.8",
-    "babel-core": "^6.26.3",
-    "babel-runtime": "^6.26.0"
+    "@storybook/addons": "^3.4.8"
   }
 }
