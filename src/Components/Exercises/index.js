@@ -23,7 +23,7 @@ function AutoGrid(props) {
     <div className={classes.root}>
       <Grid container spacing={24}>
         <Grid item xs>
-          <Paper className={classes.paper}>eyoooooooo</Paper>
+          <Paper className={classes.paper}>User Name</Paper>
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>xs</Paper>
@@ -52,5 +52,3 @@ AutoGrid.propTypes = {
 };
 
 export default withStyles(styles)(AutoGrid);
-
-
