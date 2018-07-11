@@ -19,7 +19,7 @@
     "installserverdep": "cd auth-server && yarn install",
     "installclientdep": "cd client && yarn install",
     "start": "concurrently \"cd client && yarn start\" \"cd auth-server && node authorization_code/spotifyapp.js\"",
-    "start:prod": "cd server && yarn start:prod",
+    "start:prod": "cd auth-server && yarn start:prod",
     "heroku-postbuild": "yarn build"
   }
 }
