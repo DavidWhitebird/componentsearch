@@ -20,7 +20,18 @@
     "pug": "^0.1.0",
     "serve-favicon": "~2.3.0",
     "tsc": "^1.20150623.0",
-    "nodemon": "^1.17.5"
+    "nodemon": "^1.17.5",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "1.1.4",
+    "@material-ui/core": "^1.1.0",
+    "@material-ui/icons": "^1.1.0",
+    "spotify-web-api-js": "^0.24.0",
+    "react-google-login": "^3.2.1",
+    "typeface-roboto": "^0.0.54",
+    "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0",
+    "serve":"9.2.0"
   },
   "scripts": {
     "installserverstuff": "yarn install",

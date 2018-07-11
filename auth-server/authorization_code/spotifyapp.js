@@ -79,7 +79,7 @@ spotifyapp.use(express.static(__dirname + '/public'))
    .use('/pop', pop);
 // additions
 spotifyapp.get('/cities', cities)
-
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 
 spotifyapp.get('/login', function(req, res) {
