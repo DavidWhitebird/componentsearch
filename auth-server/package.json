@@ -26,6 +26,8 @@
   "scripts": {
     "installserverstuff": "yarn install",
     "startserver": "node authorization_code/spotifyapp.js",
-    "nodemonserver": "nodemon authorization_code/spotifyapp.js"
+    "start": "nodemon authorization_code/spotifyapp.js",
+    "start:prod": "node authorization_code/spotifyapp.js",
+    "build": "yarn build"
   }
 }
