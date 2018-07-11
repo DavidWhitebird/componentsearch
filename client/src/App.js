@@ -1,15 +1,24 @@
 /*some function descriptions from https://medium.com/@jonnykalambay/now-playing-using-spotifys-awesome-api-with-react-7db8173a7b13*/
 
 import React, { Component, Fragment } from 'react';
-//import logo from './logo.svg';
 import './App.css';
-import Papp from './Components/PApp.js';
 import { Header, Footer, Exercises, Dave} from './Components/Layouts/index.js';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import SpotifyWebApi from 'spotify-web-api-js';
+import 'typeface-roboto';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+//import logo from './logo.svg';
+//import Papp from './Components/PApp.js';
 //import GoogleLogin from 'react-google-login';
 //import secrets from 'secretsconfigclient';
+//import spotifyMethods from './spotifyMethods';
 
-import SpotifyWebApi from 'spotify-web-api-js';
+
+
+
 const spotifyApi = new SpotifyWebApi();
+var playlistJsonTemplate = {employees: [], attributes: [], pageSize: 2, links: {}};
 
 
 class App extends Component {
@@ -23,8 +32,8 @@ class App extends Component {
         }
         this.state = {
             loggedIn: token ? true : false,
-            nowPlaying: {name: 'Not Checked', albumArt: ''},
-            currentuser: {id: 'not created', name: 'Not added',},
+            nowPlaying: {name: '', albumArt: ''},
+            currentuser: {id: '', name: '',},
             //additions
             cities: {cities: []}
         }
@@ -54,9 +63,10 @@ class App extends Component {
                         albumArt: response.item.album.images[0].url
                     }
                 });
-            })
+            });
+        this.storeUserNameAndId();
     }
-    getUserName() {
+    storeUserNameAndId() {
         spotifyApi.getMe()
             .then((response) => {
                 this.setState({
@@ -67,40 +77,62 @@ class App extends Component {
                 });
             });
     }
-    
+    createJsonPlaylistParameter() {
+        const plJSON = {
+            "name": prompt('Enter Playlist Name:')
+        }
+        var MyJSON = JSON.stringify(plJSON);
+        alert(plJSON);
+        return MyJSON;
+    }
+    componentDidMount(){
+        this.storeUserNameAndId();
+    }
+
+    doathing(){
+        spotifyApi.createPlaylist(this.state.currentuser.id, this.createJsonPlaylistParameter())
+    }
 
     render() {
         return (
             <Fragment>
-{/*
-                <GoogleLogin onSuccess={} onFailure={} clientId={}/>
-*/}
+                <CssBaseline />
+                {/*<GoogleLogin onSuccess={} onFailure={} clientId={}/>*/}
                 <Header
-                    username={this.state.currentuser.name}/>
-                <button onClick={() => this.getUserName()}>
-                    Get User Name
-                </button>
+                    username={this.state.currentuser.name}
+                />
+                    <Button
+                        onClick={() =>
+                        this.getNowPlaying() &&
+                        this.storeUserNameAndId()
+                        }>
+                    </Button>
                 <div
                     className='App' >
                     <a href='http://localhost:8888'> Login to Spotify </a>
                 </div>
-                <div>
-                    Now Playing: { this.state.nowPlaying.name }
-                </div>
-                <div>
-                    <h3>Current User: { this.state.currentuser.name}</h3>
-                    <h4>User ID: { this.state.currentuser.id}</h4>
-                </div>
-                <div>
-                    <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/>
-                </div>
-
                 { this.state.loggedIn &&
-                <button onClick={() => this.getNowPlaying()}>
-                    Check Now Playing
-                </button>
-                }
+                <Button onClick={() =>
+                    this.getNowPlaying() &&
+                    this.storeUserNameAndId()
+                    }>
+                    <Typography>
+                        <div>
+                            <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/>
+                        </div>
+                        <p>Now Playing: { this.state.nowPlaying.name }</p>
+                        <p>Current User: { this.state.currentuser.name}</p>
+                        <p>User ID: { this.state.currentuser.id}</p>
 
+                    </Typography>
+                </Button>}
+                { this.state.loggedIn &&
+                    <Button
+                        onClick={() =>
+                            this.getNowPlaying()}>
+                    Check Now Playing
+                    </Button>
+                }
             </Fragment>
     )
     }

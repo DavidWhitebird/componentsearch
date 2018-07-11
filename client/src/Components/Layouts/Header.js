@@ -7,14 +7,12 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-/*import Switch from '@material-ui/core/Switch';
+import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';*/
+import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-
-
-
+import MenuButton from './menuButton';
 
 
 const styles = {
@@ -37,9 +35,19 @@ class Header extends React.Component {
             date: new Date(),
             auth: true,
             anchorEl: null,
-            username: 'Header unchanged username'
+            username: '',
+            year: '2005',
+            month: '08',
+            day: '10',
+            value1: 1,
+            value2: 2,
+            value3: 3,
+            menuaccountitems: ['Profile','Logout'],
+            menumusicitems: ['Create Playlist', 'Get a Song'],
+            loggedin: false
         }
     };
+
 
   handleChange = (event, checked) => {
     this.setState({ auth: checked });
@@ -52,82 +60,40 @@ class Header extends React.Component {
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
+    _handleChange(fieldName, value){
+        this.setState({
+            [fieldName]: value
+        });
+    }
+    render() {
+        const { classes } = this.props;
+        const { auth, anchorEl } = this.state;
+        const open = Boolean(anchorEl);
 
-  render() {
-    const { classes } = this.props;
-    const { auth, anchorEl } = this.state;
-    const open = Boolean(anchorEl);
+        return (
+            <div className={classes.root}>
+                <AppBar position="static">
+                    <Toolbar>
+                        {auth && <MenuButton
+                            iconType={MenuIcon}
+                            items={this.state.menumusicitems}
+                        />}
+                        <Typography variant="title" color="inherit" className={classes.flex}>
+                            <p>Basement Tunes</p>
+                        </Typography>
+                        <Typography variant="title" color="inherit" className={classes.flex}>
+                            {this.props.username}
+                        </Typography>
+                        {auth && <MenuButton
+                            iconType={AccountCircle}
+                            items={this.state.menuaccountitems}
 
-    return (
-      <div className={classes.root}>
-          <AppBar position="static">
-          <Toolbar>
-            <div>
-              <IconButton
-                  className={classes.menuButton}
-                  color="inherit"
-                  onClick={this.handleMenu}
-                  aria-label="Menu"
-              >
-                  <Menu
-                      id="menu-different"
-                      anchorEl={anchorEl}
-                      anchorOrigin={{
-                          vertical: 'top',
-                          horizontal: 'right',
-                      }}
-                      transformOrigin={{
-                          vertical: 'top',
-                          horizontal: 'right',
-                      }}
-                      open={open}
-                      onClose={this.handleClose}
-                  >
-
-                      <MenuItem onClick={this.handleClose}>THIS IS A DIRP</MenuItem>
-                      <MenuItem onClick={this.handleClose}>TEST COMPLETE</MenuItem>
-
-                  </Menu>
-                <MenuIcon />
-              </IconButton>
-
+                        />}
+                    </Toolbar>
+                </AppBar>
             </div>
-            <Typography variant="title" color="inherit" className={classes.flex}>
-                name is {this.state.username}.
-            </Typography>
-            {auth && (
-              <div>
-                <IconButton
-                  aria-owns={open ? 'menu-appbar' : null}
-                  aria-haspopup="true"
-                  onClick={this.handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar2"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={open}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>Log Out</MenuItem>
-                </Menu>
-              </div>
-            )}
-          </Toolbar>
-        </AppBar>
-      </div>
-    );
+        );
+
   }
 }
 
