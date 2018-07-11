@@ -7,6 +7,7 @@ import Papp from './Components/PApp.js';
 import { Header, Footer, Exercises, Dave} from './Components/Layouts/index.js';
 //import GoogleLogin from 'react-google-login';
 //import secrets from 'secretsconfigclient';
+import spotifyMethods from './spotifyMethods';
 
 import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
@@ -67,7 +68,9 @@ class App extends Component {
                 });
             });
     }
-    
+    doathing(){
+        spotifyApi.createPlaylist(this.state.currentuser.id, spotifyMethods.c)
+    }
 
     render() {
         return (
