@@ -1,0 +1,53 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.7.0/libexec/bin/yarn.js build
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Postgres.spotifyapp/Contents/Versions/latest/bin
+
+Yarn version: 
+  1.7.0
+
+Node version: 
+  8.9.3
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/dw/Dropbox/GitHub/componentsearch/package.json: Unexpected token } in JSON at position 539
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:1130:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:98:30)
+      at /usr/local/Cellar/yarn/1.7.0/libexec/lib/cli.js:109:13
+      at <anonymous>
+
+npm manifest: 
+  {
+    "name": "componentsearchherokubuild",
+    "version": "0.0.1",
+    "engines": {
+      "node": "8.9.4",
+      "npm": "6.1.0",
+      "yarn":"^1.7.0"
+    },
+    "cacheDirectories": [
+      "client/node_modules",
+      "auth-server/node_modules"],
+    "scripts": {
+      "start": "cd auth-server && yarn install && node authorization_code/spotifyapptifyapp.js",
+      "dev": "nf start -p 3000 --procfile Procfile.dev",
+      "clientserver": "client/node_modules/.bin/serve",
+      "buildclient": "cd client && yarn build"
+    },
+    "devDependencies": {
+      "concurrently": "3.1.0",
+  
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
