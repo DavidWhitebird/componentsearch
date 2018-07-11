@@ -35,7 +35,7 @@ class Header extends React.Component {
             date: new Date(),
             auth: true,
             anchorEl: null,
-            username: 'Header unchanged username',
+            username: '',
             year: '2005',
             month: '08',
             day: '10',
@@ -43,7 +43,8 @@ class Header extends React.Component {
             value2: 2,
             value3: 3,
             menuaccountitems: ['Profile','Logout'],
-            menumusicitems: ['Create Playlist', 'Get a Song']
+            menumusicitems: ['Create Playlist', 'Get a Song'],
+            loggedin: false
         }
     };
 
@@ -78,7 +79,10 @@ class Header extends React.Component {
                             items={this.state.menumusicitems}
                         />}
                         <Typography variant="title" color="inherit" className={classes.flex}>
-                            name is {this.state.username}.
+                            <p>Basement Tunes</p>
+                        </Typography>
+                        <Typography variant="title" color="inherit" className={classes.flex}>
+                            {this.props.username}
                         </Typography>
                         {auth && <MenuButton
                             iconType={AccountCircle}

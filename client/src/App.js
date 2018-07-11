@@ -7,6 +7,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import SpotifyWebApi from 'spotify-web-api-js';
 import 'typeface-roboto';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 //import logo from './logo.svg';
 //import Papp from './Components/PApp.js';
 //import GoogleLogin from 'react-google-login';
@@ -31,8 +32,8 @@ class App extends Component {
         }
         this.state = {
             loggedIn: token ? true : false,
-            nowPlaying: {name: 'Not Checked', albumArt: ''},
-            currentuser: {id: 'not created', name: 'Not added',},
+            nowPlaying: {name: '', albumArt: ''},
+            currentuser: {id: '', name: '',},
             //additions
             cities: {cities: []}
         }
@@ -62,9 +63,10 @@ class App extends Component {
                         albumArt: response.item.album.images[0].url
                     }
                 });
-            })
+            });
+        this.storeUserNameAndId();
     }
-    getUserName() {
+    storeUserNameAndId() {
         spotifyApi.getMe()
             .then((response) => {
                 this.setState({
@@ -83,7 +85,9 @@ class App extends Component {
         alert(plJSON);
         return MyJSON;
     }
-
+    componentDidMount(){
+        this.storeUserNameAndId();
+    }
 
     doathing(){
         spotifyApi.createPlaylist(this.state.currentuser.id, this.createJsonPlaylistParameter())
@@ -95,35 +99,40 @@ class App extends Component {
                 <CssBaseline />
                 {/*<GoogleLogin onSuccess={} onFailure={} clientId={}/>*/}
                 <Header
-                    username={this.state.currentuser.name}/>
-                <button onClick={() => this.getUserName()}>
-                    Get User Name
-                </button>
+                    username={this.state.currentuser.name}
+                />
+                    <Button
+                        onClick={() =>
+                        this.getNowPlaying() &&
+                        this.storeUserNameAndId()
+                        }>
+                    </Button>
                 <div
                     className='App' >
                     <a href='http://localhost:8888'> Login to Spotify </a>
                 </div>
                 { this.state.loggedIn &&
-                <button onClick={() => this.getNowPlaying()}>
-                    Check Now Playing
+                <Button onClick={() =>
+                    this.getNowPlaying() &&
+                    this.storeUserNameAndId()
+                    }>
+                    <Typography>
+                        <div>
+                            <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/>
+                        </div>
+                        <p>Now Playing: { this.state.nowPlaying.name }</p>
+                        <p>Current User: { this.state.currentuser.name}</p>
+                        <p>User ID: { this.state.currentuser.id}</p>
 
-                <Typography>
-                    <div>
-                        <img src={this.state.nowPlaying.albumArt} style={{ height: 150 }}/>
-                    </div>
-                    <p>Now Playing: { this.state.nowPlaying.name }</p>
-                    <p>Current User: { this.state.currentuser.name}</p>
-                    <p>User ID: { this.state.currentuser.id}</p>
-
-                </Typography>
-
-                </button>}
+                    </Typography>
+                </Button>}
                 { this.state.loggedIn &&
-                <button onClick={() => this.getNowPlaying()}>
+                    <Button
+                        onClick={() =>
+                            this.getNowPlaying()}>
                     Check Now Playing
-                </button>
+                    </Button>
                 }
-
             </Fragment>
     )
     }
