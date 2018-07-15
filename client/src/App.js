@@ -66,6 +66,7 @@ class App extends Component {
             });
         this.storeUserNameAndId();
     }
+
     storeUserNameAndId() {
         spotifyApi.getMe()
             .then((response) => {
@@ -77,6 +78,7 @@ class App extends Component {
                 });
             });
     }
+
     createJsonPlaylistParameter() {
         const plJSON = {
             "name": prompt('Enter Playlist Name:')
