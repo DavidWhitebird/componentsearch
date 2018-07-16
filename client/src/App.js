@@ -1,6 +1,6 @@
 /*some function descriptions from https://medium.com/@jonnykalambay/now-playing-using-spotifys-awesome-api-with-react-7db8173a7b13*/
 
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, LinkHTMLAttributes } from 'react';
 import './App.css';
 import { Header, Footer, Exercises, Dave} from './Components/Layouts/index.js';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -8,10 +8,11 @@ import SpotifyWebApi from 'spotify-web-api-js';
 import 'typeface-roboto';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import secrets from './secretsconfigclient';
+
 //import logo from './logo.svg';
 //import Papp from './Components/PApp.js';
 //import GoogleLogin from 'react-google-login';
-//import secrets from 'secretsconfigclient';
 //import spotifyMethods from './spotifyMethods';
 
 
@@ -79,6 +80,7 @@ class App extends Component {
             });
     }
 
+
     createJsonPlaylistParameter() {
         const plJSON = {
             "name": prompt('Enter Playlist Name:')
@@ -111,7 +113,11 @@ class App extends Component {
                     </Button>
                 <div
                     className='App' >
-                    <a href='http://localhost:8888'> Login to Spotify </a>
+                    <a href={secrets.sp_development_backend_uri}> Login to Spotify </a>
+                </div>
+                <div className ='App' >
+                    <a href={secrets.sp_development_logout_backend}> Logout
+                    </a>
                 </div>
                 { this.state.loggedIn &&
                 <Button onClick={() =>
